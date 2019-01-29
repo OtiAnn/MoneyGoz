@@ -1,0 +1,25 @@
+# == Schema Information
+#
+# Table name: items
+#
+#  id           :bigint(8)        not null, primary key
+#  item_type_id :bigint(8)
+#  name         :string
+#  price        :decimal(6, 2)
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_type: one
+  name: MyString
+  price: 
+  price: 
+
+two:
+  item_type: two
+  name: MyString
+  price: 
+  price: 

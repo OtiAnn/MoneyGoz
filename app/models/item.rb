@@ -13,4 +13,5 @@
 class Item < ApplicationRecord
   belongs_to :item_type
   has_many   :payment_items 
+  has_many   :payments, through: :payment_items
 end

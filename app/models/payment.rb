@@ -16,4 +16,5 @@ class Payment < ApplicationRecord
   belongs_to :user
   belongs_to :payment_type
   has_many   :payment_items
+  has_many   :items, through: :payment_items
 end

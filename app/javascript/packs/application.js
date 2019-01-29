@@ -9,12 +9,17 @@
 
 import Vue from 'vue/dist/vue.esm'
 import App from '../app.vue'
-window.Vue = Vue
 
-document.addEventListener('DOMContentLoaded', () => {
-  const el = document.body.appendChild(document.createElement('hello'))
-  const app = new Vue({
-    el,
-    render: h => h(App)
-  })
+document.addEventListener('turbolinks:load', () => {
+  var element = document.querySelector('#payment_groups')
+  if (element != undefined) {
+    const app = new Vue({
+      el: element,
+      data: {
+        payments: JSON.parse(element.dataset.payments)
+      },
+      template: "<App :original_payments='payments' />",
+      components: { App }
+    })
+  }
 })

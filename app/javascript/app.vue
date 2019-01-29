@@ -1,16 +1,24 @@
 <template>
   <div id="app">
-    <p>{{ message }}</p>
+    <div v-for="payment in original_payments" class="row">
+      <div class="col-3">{{ payment.payment_date}}</div>
+      <div class="col-3">
+        <ul v-for="item in payment.items">
+          <li>
+            <span>{{ item.name }}</span>
+            <span>{{ item.price }}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="col-3">{{ payment.tax}}</div>
+      <div class="col-3">{{ payment.tip}}</div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  data: function () {
-    return {
-      message: "Hello Vue!"
-    }
-  }
+  props: ["original_payments"]
 }
 </script>
 

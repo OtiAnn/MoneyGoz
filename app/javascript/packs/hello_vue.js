@@ -7,7 +7,6 @@
 
 import Vue from 'vue'
 import App from '../app.vue'
-window.Vue = Vue
 
 document.addEventListener('DOMContentLoaded', () => {
   const el = document.body.appendChild(document.createElement('hello'))

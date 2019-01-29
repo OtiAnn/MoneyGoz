@@ -65,3 +65,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Personalized
 gem 'foreman'
+gem 'devise'
+gem 'annotate'
+gem 'slim'

@@ -11,9 +11,9 @@ import Vue from 'vue/dist/vue.esm'
 import App from '../app.vue'
 
 document.addEventListener('turbolinks:load', () => {
-  var element = document.querySelector('#payment_groups')
+  let element = document.querySelector('#payment_groups')
   if (element != undefined) {
-    const app = new Vue({
+    const vm = new Vue({
       el: element,
       data: {
         payments: JSON.parse(element.dataset.payments)

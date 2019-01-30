@@ -1,0 +1,11 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  .container-fluid
+    = link_to "MoneyGoz", "/", class: "navbar-brand"
+    .collapse.navbar-collapse#navbarMain
+      ul.navbar-nav.mr-auto.mt-2.mt-md-0
+      ul.navbar-nav
+        - if user_signed_in?
+          li.nav-item.nav-link.disabled = "You're logged in as #{current_user.email}"
+          li.nav-item = link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link"
+        - else
+          li.nav-item = link_to "Log in", new_user_session_path, class: "nav-link"

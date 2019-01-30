@@ -4,6 +4,8 @@ html
     title MoneyGoz
     = csrf_meta_tags
     = csp_meta_tag
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
 
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
@@ -11,5 +13,5 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    = render partial: 'layouts/nav'
+    = render 'shared/nav'
     = yield

@@ -1,1 +1,1 @@
-= tag.div id: :payment_groups, data: { payments: @payments.to_json(include: :items)}
+= tag.div id: :payment_groups, data: { payments: @payments.to_json(include: [:payment_type, :items => {:include => :item_type}])}

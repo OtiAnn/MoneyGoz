@@ -1,3 +1,9 @@
+<style>
+  [v-cloak] {
+    display: none;
+  }
+</style>
+
 <template>
   <div id="app" class="p-5">
     <table class="table table-bordered table-hover">
@@ -8,7 +14,7 @@
           <th scope="col">Tax</th>
           <th scope="col">Tip</th>
           <th scope="col">Paid By</th>
-          <th scope="col">Total Amount</th>
+          <th scope="col">Amount</th>
         </tr>
       </thead>
       <tbody>
@@ -26,7 +32,15 @@
           <td>CDN$ {{ payment.tax }}</td>
           <td>CDN$ {{ payment.tip }}</td>
           <td>{{ payment.payment_type.name }}</td>
-          <td>CDN$ {{ getTotalAmount(payment) }}</td>
+          <td ref="theTotal" :data-value="getTotalAmount(payment)" v-cloak>CDN$ {{ getTotalAmount(payment) }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Total</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td ref="theSumOfTotal" v-cloak></td>
         </tr>
       </tbody>
     </table>
@@ -44,17 +58,31 @@ export default {
       }
     },
     getTotalAmount: function (payment) {
-      var item_length = payment.items.length;
-      if (item_length > 0) {
+      if (payment.items.length > 0) {
         var sum_of_items_amount = 0.00;
-        payment.items.map( function (item) {
+        payment.items.map(function(item) {
           sum_of_items_amount += parseFloat(item.price);
-        })
+        });
 
         return (sum_of_items_amount + parseFloat(payment.tip) + parseFloat(payment.tax)).toFixed(2);
       }
-      return 'N/A'
+      return 'N/A';
+    },
+    getTotalPaymentAmount: function() {
+      if (this.$refs.theTotal.length > 0) {
+        var totalAmount = 0.00
+        this.$refs.theTotal.map(function(total) {
+          totalAmount += parseFloat(total.dataset.value);
+        })
+        var sumOfTotal = totalAmount.toFixed(2);
+        this.$refs.theSumOfTotal.innerText = "CDN$ " + sumOfTotal;
+        return;
+      }
+      return 'N/A';
     }
+  },
+  mounted: function() {
+    this.getTotalPaymentAmount();
   }
 }
 </script>
